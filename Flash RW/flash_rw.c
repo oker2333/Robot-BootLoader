@@ -13,7 +13,7 @@ void FlashWrite(uint16_t len,uint8_t *data,uint32_t addr_start)
 
 	for(i=0;i<len/4;i++) 
 	{
-		temp = (data[0]<<0)+(data[1]<<8)+(data[2]<<16)+(data[3]<<24);
+		temp = (data[0] << 0) + (data[1] << 8) + (data[2] << 16) + (data[3] << 24);
 
 		fmc_state = fmc_word_program(addr, temp);
 		
@@ -28,28 +28,28 @@ void FlashWrite(uint16_t len,uint8_t *data,uint32_t addr_start)
 		addr += 4;
 	}
 	
-	if((len % 4)==3)
+	if((len % 4) == 3)
 	{
-		temp = (data[0]<<0)+(data[1]<<8)+(data[2]<<16);
+		temp = (data[0] << 0) + (data[1] << 8) + (data[2] << 16);
 		temp = temp | 0xff000000;
 		fmc_state = fmc_word_program(addr,temp);
 		fmc_flag_clear(FMC_FLAG_BANK0_END | FMC_FLAG_BANK0_WPERR | FMC_FLAG_BANK0_PGERR);
 	}
 	else
 	{
-		if((len % 4)==2)
+		if((len % 4) == 2)
 		{
-			temp = (data[0]<<0)+(data[1]<<8);
+			temp = (data[0]<<0) + (data[1]<<8);
 			temp = temp | 0xffff0000;
-		    fmc_state = fmc_word_program(addr,temp);
+			fmc_state = fmc_word_program(addr,temp);
 			fmc_flag_clear(FMC_FLAG_BANK0_END | FMC_FLAG_BANK0_WPERR | FMC_FLAG_BANK0_PGERR);
 		}
 		else
 		{
-			if((len % 4)==1)
+			if((len % 4) == 1)
 			{
 				temp = (data[0]<<0);
-				temp = temp |  0xffffff00 ;
+				temp = temp | 0xffffff00 ;
 				fmc_state = fmc_word_program(addr,temp);
 				fmc_flag_clear(FMC_FLAG_BANK0_END | FMC_FLAG_BANK0_WPERR | FMC_FLAG_BANK0_PGERR);
 			}
@@ -57,7 +57,6 @@ void FlashWrite(uint16_t len,uint8_t *data,uint32_t addr_start)
 	}
 	fmc_lock();
 }
-
 
 void FlashRead(uint16_t len,uint8_t *outdata,uint32_t addr_start)
 {	
@@ -73,7 +72,6 @@ void FlashRead(uint16_t len,uint8_t *outdata,uint32_t addr_start)
 		outdata++;
 	}
 }
-
 
 void FlashErase(uint32_t start, uint32_t end)
 {

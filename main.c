@@ -1,7 +1,4 @@
-/* Firmware includes. */
 #include "gd32f30x_libopt.h"
-
-/* Hardware includes. */
 #include "bsp.h"
 
 /*

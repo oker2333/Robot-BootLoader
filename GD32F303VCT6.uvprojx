@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,GD32F30X_HD,__TARGET_FPU_VFP</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Robot-BootLoader;.\CMSIS;.\CMSIS\GD32F30x\Include;.\GD32F30x_standard_peripheral\Include;.\FreeRTOS-Kernel\include;.\FreeRTOS-Kernel\portable\RVDS\ARM_CM4F;.\FreeRTOS-Kernel;.\Hardware;.\vl6180x;.\CodeSamples\inc;.\Common_API</IncludePath>
+              <IncludePath>..\Robot-BootLoader;.\CMSIS;.\CMSIS\GD32F30x\Include;.\GD32F30x_standard_peripheral\Include;.\FreeRTOS-Kernel\include;.\FreeRTOS-Kernel\portable\RVDS\ARM_CM4F;.\FreeRTOS-Kernel;.\Hardware;.\vl6180x;.\CodeSamples\inc;.\Common_API;.\Flash RW</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -380,7 +380,7 @@
       </TargetOption>
       <Groups>
         <Group>
-          <GroupName>Application</GroupName>
+          <GroupName>IAP</GroupName>
           <Files>
             <File>
               <FileName>main.c</FileName>
@@ -388,15 +388,20 @@
               <FilePath>.\main.c</FilePath>
             </File>
             <File>
-              <FileName>gd32f30x_it.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\gd32f30x_it.c</FilePath>
+              <FileName>iap_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\iap_config.h</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
           <GroupName>CMSIS</GroupName>
           <Files>
+            <File>
+              <FileName>gd32f30x_it.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\gd32f30x_it.c</FilePath>
+            </File>
             <File>
               <FileName>system_gd32f30x.c</FileName>
               <FileType>1</FileType>
@@ -546,6 +551,16 @@
               <FileName>usart.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Hardware\usart.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Flash R/W</GroupName>
+          <Files>
+            <File>
+              <FileName>flash_rw.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Flash RW\flash_rw.c</FilePath>
             </File>
           </Files>
         </Group>

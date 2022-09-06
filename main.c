@@ -10,6 +10,12 @@
 	CPU:120MHz
 */
 
+/*
+	IAP start:0x0800 0000  size:32KB	(0x8000 Bytes)
+	APP start:0x0800 8000	 size:222KB	(0x37800 Bytes)
+	INF start:0x0803 f800  size:2KB		(0x800 Bytes)
+*/
+
 int main(void)
 {
 		bsp_usart_init(115200);

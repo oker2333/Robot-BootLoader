@@ -1,15 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "usart.h"
-#include "fifo.h"
 #include "gd32f30x_libopt.h"
-
-#include "FreeRTOS.h"
-#include "task.h"
-#include "timers.h"
-#include "semphr.h"
-
-static SemaphoreHandle_t UsartxSemaphore;
 
 static void usart_config(uint32_t baudval)
 {
@@ -103,7 +95,6 @@ static void nvic_config(void)
 
 void bsp_usart_init(uint32_t baudval) 
 {   
-	  UsartxSemaphore = xSemaphoreCreateBinary();
     nvic_config();
     usart_config(baudval);
     usart_dma_config();
@@ -117,7 +108,6 @@ void usart0_dma_send(uint8_t *buffer,uint16_t len)
 	dma_transfer_number_config(DMA0, DMA_CH3, len);
 	
 	dma_channel_enable(DMA0, DMA_CH3);
-	xSemaphoreTake(UsartxSemaphore, portMAX_DELAY);
 }
 
 uint16_t usart0_dma_recv(uint8_t *buffer)
@@ -143,11 +133,9 @@ void DMA0_Channel3_IRQHandler(void)
 }
 
 /*DMA RX*/
-extern FIFO_BUFFER *Queue_PTR;
 void DMA0_Channel4_IRQHandler(void)
 {
     if(dma_interrupt_flag_get(DMA0, DMA_CH4, DMA_INT_FLAG_FTF)){     
-			 FIFO_Recv(Queue_PTR);
 			 dma_interrupt_flag_clear(DMA0, DMA_CH4, DMA_INT_FLAG_G);
     }
 }
@@ -156,15 +144,11 @@ void DMA0_Channel4_IRQHandler(void)
 void USART0_IRQHandler(void)
 {
     if(RESET != usart_interrupt_flag_get(USART0, USART_INT_FLAG_IDLE)){
-			  FIFO_Recv(Queue_PTR);
 				usart_interrupt_flag_clear(USART0,USART_INT_FLAG_IDLE);
         USART_STAT0(USART0);
 			  USART_DATA(USART0);
     }
     if(RESET != usart_interrupt_flag_get(USART0, USART_INT_FLAG_TC)){
-				BaseType_t pxHigherPriorityTaskWoken;
-				xSemaphoreGiveFromISR(UsartxSemaphore,&pxHigherPriorityTaskWoken);
 				usart_interrupt_flag_clear(USART0,USART_INT_FLAG_TC);
-				portYIELD_FROM_ISR(pxHigherPriorityTaskWoken);
     }
 }

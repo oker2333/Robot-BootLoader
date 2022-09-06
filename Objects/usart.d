@@ -3,18 +3,6 @@
 .\objects\usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\usart.o: Hardware\usart.h
 .\objects\usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\usart.o: .\Common_API\fifo.h
-.\objects\usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
-.\objects\usart.o: .\FreeRTOS-Kernel\include\FreeRTOS.h
-.\objects\usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-.\objects\usart.o: .\FreeRTOS-Kernel\FreeRTOSConfig.h
-.\objects\usart.o: .\FreeRTOS-Kernel\include\projdefs.h
-.\objects\usart.o: .\FreeRTOS-Kernel\include\portable.h
-.\objects\usart.o: .\FreeRTOS-Kernel\include\deprecated_definitions.h
-.\objects\usart.o: .\FreeRTOS-Kernel\portable\RVDS\ARM_CM4F\portmacro.h
-.\objects\usart.o: .\FreeRTOS-Kernel\include\mpu_wrappers.h
-.\objects\usart.o: .\FreeRTOS-Kernel\include\task.h
-.\objects\usart.o: .\FreeRTOS-Kernel\include\list.h
 .\objects\usart.o: ..\Robot-BootLoader\gd32f30x_libopt.h
 .\objects\usart.o: .\GD32F30x_standard_peripheral\Include\gd32f30x_rcu.h
 .\objects\usart.o: .\CMSIS\GD32F30x\Include\gd32f30x.h
@@ -47,6 +35,3 @@
 .\objects\usart.o: .\GD32F30x_standard_peripheral\Include\gd32f30x_misc.h
 .\objects\usart.o: .\GD32F30x_standard_peripheral\Include\gd32f30x_enet.h
 .\objects\usart.o: .\GD32F30x_standard_peripheral\Include\gd32f30x_exmc.h
-.\objects\usart.o: .\FreeRTOS-Kernel\include\timers.h
-.\objects\usart.o: .\FreeRTOS-Kernel\include\semphr.h
-.\objects\usart.o: .\FreeRTOS-Kernel\include\queue.h

@@ -24,8 +24,6 @@ void bsp_gpio_exti_init(void)
 		exti_interrupt_flag_clear(EXTI_1);		
 }
 
-extern SemaphoreHandle_t VL6180xSemaphore;
-
 void EXTI1_IRQHandler(void)
 {
     if (RESET != exti_interrupt_flag_get(EXTI_1)) {

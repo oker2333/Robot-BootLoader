@@ -1,5 +1,5 @@
-.\objects\flash_rw.o: Flash RW\flash_rw.c
-.\objects\flash_rw.o: Flash RW\flash_rw.h
+.\objects\flash_rw.o: Hardware\flash_rw.c
+.\objects\flash_rw.o: Hardware\flash_rw.h
 .\objects\flash_rw.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\flash_rw.o: .\GD32F30x_standard_peripheral\Include\gd32f30x_fmc.h
 .\objects\flash_rw.o: .\CMSIS\GD32F30x\Include\gd32f30x.h

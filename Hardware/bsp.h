@@ -2,8 +2,6 @@
 #define BSP_H
 
 #include "usart.h"
-#include "exti.h"
-#include "pwm.h"
-#include "iic.h"
+#include "flash_rw.h"
 
 #endif

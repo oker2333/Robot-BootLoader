@@ -275,7 +275,7 @@
               <OCR_RVCT4>
                 <Type>1</Type>
                 <StartAddress>0x8000000</StartAddress>
-                <Size>0x40000</Size>
+                <Size>0x8000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
                 <Type>1</Type>
@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,GD32F30X_HD,__TARGET_FPU_VFP</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Robot-BootLoader;.\CMSIS;.\CMSIS\GD32F30x\Include;.\GD32F30x_standard_peripheral\Include;.\FreeRTOS-Kernel\include;.\FreeRTOS-Kernel\portable\RVDS\ARM_CM4F;.\FreeRTOS-Kernel;.\Hardware;.\vl6180x;.\CodeSamples\inc;.\Common_API;.\Flash RW</IncludePath>
+              <IncludePath>..\Robot-BootLoader;.\CMSIS;.\CMSIS\GD32F30x\Include;.\GD32F30x_standard_peripheral\Include;.\FreeRTOS-Kernel\include;.\FreeRTOS-Kernel\portable\RVDS\ARM_CM4F;.\FreeRTOS-Kernel;.\Hardware;.\vl6180x;.\CodeSamples\inc;.\Common_API</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -552,15 +552,10 @@
               <FileType>1</FileType>
               <FilePath>.\Hardware\usart.c</FilePath>
             </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Flash R/W</GroupName>
-          <Files>
             <File>
               <FileName>flash_rw.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Flash RW\flash_rw.c</FilePath>
+              <FilePath>.\Hardware\flash_rw.c</FilePath>
             </File>
           </Files>
         </Group>

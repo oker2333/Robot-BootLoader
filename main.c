@@ -16,11 +16,6 @@
 int main(void)
 {
 		bsp_usart_init(115200);
-		
-		/* led gpio init */
-		rcu_periph_clock_enable(RCU_GPIOC);
-		gpio_init(GPIOC, GPIO_MODE_OUT_PP, GPIO_OSPEED_50MHZ,GPIO_PIN_13);
-		GPIO_BOP(GPIOC) = GPIO_PIN_13;
 	
 		while(1){
 		

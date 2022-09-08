@@ -1,6 +1,18 @@
 #include "flash_rw.h"
 
-void flash_write_buffer(uint32_t address, uint8_t *data,uint32_t data_len)
+void flash_write_pages(uint32_t address,uint32_t size)
+{
+	  fmc_unlock();
+	
+		for(int i = (address / FMC_PAGE_SIZE);i <= ((address + size) / FMC_PAGE_SIZE);i++)
+		{
+			 fmc_page_erase(i * FMC_PAGE_SIZE);
+		}
+		
+	  fmc_lock();
+}
+
+uint32_t flash_write_buffer(uint32_t address, uint8_t *data,uint32_t data_len)
 {
 	  uint8_t remainder = 0;
 	  uint32_t write_value = 0;
@@ -67,6 +79,7 @@ void flash_write_buffer(uint32_t address, uint8_t *data,uint32_t data_len)
 		}
 		
 	  fmc_lock();
+		return 0;
 }
 
 void flash_read_buffer(uint32_t address, uint8_t *data,uint32_t data_len)

@@ -9,6 +9,9 @@
 	#define FMC_WRITE_END_ADDR      ((uint32_t)0x0803FFFFU)
 */
 
+#define IAP_FLASH_SIZE (APP_OFFSET)
+#define APP_FLASH_SIZE (INF_OFFSET-APP_OFFSET)
+
 #define IAP_OFFSET ((uint32_t)0x00000000U)
 #define APP_OFFSET ((uint32_t)0x00008000U)
 #define INF_OFFSET ((uint32_t)0x0003F800U)

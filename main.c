@@ -15,7 +15,8 @@
 
 int main(void)
 {
-		bsp_usart_init(115200);
+	  nvic_priority_group_set(NVIC_PRIGROUP_PRE4_SUB0);
+		usart_config(115200);
 	
 		while(1){
 		

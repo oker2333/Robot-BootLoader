@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,GD32F30X_HD,__TARGET_FPU_VFP</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Robot-BootLoader;.\CMSIS;.\CMSIS\GD32F30x\Include;.\GD32F30x_standard_peripheral\Include;.\FreeRTOS-Kernel\include;.\FreeRTOS-Kernel\portable\RVDS\ARM_CM4F;.\FreeRTOS-Kernel;.\Hardware;.\vl6180x;.\CodeSamples\inc;.\Common_API</IncludePath>
+              <IncludePath>..\Robot-BootLoader;.\CMSIS;.\CMSIS\GD32F30x\Include;.\GD32F30x_standard_peripheral\Include;.\FreeRTOS-Kernel\include;.\FreeRTOS-Kernel\portable\RVDS\ARM_CM4F;.\FreeRTOS-Kernel;.\Hardware;.\vl6180x;.\CodeSamples\inc;.\Common_API;.\YModem</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -556,6 +556,16 @@
               <FileName>flash_rw.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Hardware\flash_rw.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>YModem</GroupName>
+          <Files>
+            <File>
+              <FileName>ymodem.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\YModem\ymodem.c</FilePath>
             </File>
           </Files>
         </Group>

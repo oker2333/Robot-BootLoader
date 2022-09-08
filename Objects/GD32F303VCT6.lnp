@@ -29,6 +29,7 @@
 ".\objects\startup_gd32f30x_cl.o"
 ".\objects\usart.o"
 ".\objects\flash_rw.o"
+".\objects\ymodem.o"
 --strict --scatter ".\Objects\GD32F303VCT6.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

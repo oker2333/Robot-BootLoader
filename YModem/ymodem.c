@@ -121,19 +121,19 @@ static int32_t Receive_Packet (uint8_t *data, int32_t *length, uint32_t timeout)
 //buf: pointer for data storage
 //appaddr: User Application address
 //return: size of IAP file
-int32_t Ymodem_Receive (uint8_t *buf, uint32_t appaddr)
+int32_t Ymodem_Receive(void)
 {
   uint8_t packet_data[PACKET_1K_SIZE + PACKET_OVERHEAD], *file_ptr, *buf_ptr,flag_EOT;
-  int32_t i, packet_length, session_done, file_done, packets_received, errors, session_begin, size = 0;
+  int32_t i, packet_length, session_done, file_done, packets_received, errors, session_begin, size = 0, index = 0;
   char file_size[FILE_SIZE_LENGTH];
   uint32_t flashdestination;
 
   //Initialize flashdestination variable
-  flashdestination = appaddr;
+  flashdestination = APP_ADDRESS;
   flag_EOT = 0;
   for (session_done = 0, errors = 0, session_begin = 0; ;)
   {
-    for (packets_received = 0, file_done = 0, buf_ptr = buf; ;)
+    for (packets_received = 0, file_done = 0; ;)
     {
       switch (Receive_Packet(packet_data, &packet_length, NAK_TIMEOUT))
       {
@@ -194,8 +194,16 @@ int32_t Ymodem_Receive (uint8_t *buf, uint32_t appaddr)
                       Send_Byte(CA);
                       return -1;
                     }
-                    /* erase user application area */
-										flash_write_pages(appaddr,APP_FLASH_SIZE);
+										
+										buf_ptr = malloc(size);
+										if(!buf_ptr)
+                    {
+                        /* End session */
+                        Send_Byte(CA);
+                        Send_Byte(CA);
+                        return -1;
+                    }
+										
                     Send_Byte(ACK);
                     Send_Byte(CRC16);
                   }
@@ -211,21 +219,32 @@ int32_t Ymodem_Receive (uint8_t *buf, uint32_t appaddr)
                 /* Data packet */
                 else
                 {
-                  memcpy(buf_ptr, packet_data + PACKET_HEADER, packet_length);
-
-                  /* Write received data in Flash */
-                  if (flash_write_buffer(flashdestination, buf_ptr, (uint16_t) packet_length)  == 0)
-                  {
-                    Send_Byte(ACK);
-                  }
-                  else /* An error occurred while writing to Flash memory */
-                  {
-                    /* End session */
-                    Send_Byte(CA);
-                    Send_Byte(CA);
-                    return -2;
-                  }
-									flashdestination += packet_length;
+									if(index < size)
+									{
+										 memcpy(buf_ptr + index, packet_data + PACKET_HEADER, packet_length);
+										 index += packet_length;
+										 if(index >= size)
+										 {
+											 if(flash_write_buffer(flashdestination, buf_ptr, size) != 0)		/* An error occurred while writing to Flash memory */
+											 {
+													/* End session */
+												  free(buf_ptr);
+												  
+													Send_Byte(CA);
+													Send_Byte(CA);
+													return -2;
+											 }
+											 free(buf_ptr);
+										 }
+										 Send_Byte(ACK);
+									}else{
+										 /* End session */
+										 free(buf_ptr);
+										 
+										 Send_Byte(CA);
+										 Send_Byte(CA);
+										 return -2;
+									}
                 }
                 packets_received ++;
                 session_begin = 1;

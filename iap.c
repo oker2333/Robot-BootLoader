@@ -37,7 +37,7 @@ int32_t Download2Flash(void)
 	  int32_t Size = 0;
 		
 	  printf("\n\r Waiting for the file to be sent ... (press 'a' to abort)\n\r");
-	  Size = Ymodem_Receive(&buf_1k[0],APP_ADDRESS);
+	  Size = Ymodem_Receive();
 		if (Size > 0)
 		{
 			printf("-------------------\n");

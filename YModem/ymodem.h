@@ -40,6 +40,6 @@
 #endif 
 
 //Exported functions
-int32_t Ymodem_Receive (uint8_t *,uint32_t appaddr);
+int32_t Ymodem_Receive(void);
 
 #endif 

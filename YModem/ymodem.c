@@ -225,6 +225,7 @@ int32_t Ymodem_Receive (uint8_t *buf, uint32_t appaddr)
                     Send_Byte(CA);
                     return -2;
                   }
+									flashdestination += packet_length;
                 }
                 packets_received ++;
                 session_begin = 1;

@@ -292,6 +292,7 @@ typedef enum
 #define FMC_TIMEOUT_COUNT          ((uint32_t)0x000F0000U)        /*!< FMC timeout count value */
 
 /* FMC BANK address */
+#define FMC_BANK0_START_ADDRESS    ((uint32_t)0x08000000U)        /*!< FMC bank0 end address */
 #define FMC_BANK0_END_ADDRESS      ((uint32_t)0x0807FFFFU)        /*!< FMC bank0 end address */
 #define FMC_BANK0_SIZE             ((uint32_t)0x00000200U)        /*!< FMC bank0 size */
 #define FMC_SIZE                   (*(uint16_t *)0x1FFFF7E0U)     /*!< FMC size */

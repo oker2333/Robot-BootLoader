@@ -35,3 +35,4 @@
 .\objects\main.o: .\Hardware\bsp.h
 .\objects\main.o: .\Hardware\usart.h
 .\objects\main.o: .\Hardware\flash_rw.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h

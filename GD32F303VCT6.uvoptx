@@ -119,6 +119,10 @@
       <TargetDriverDllRegistry>
         <SetRegEntry>
           <Number>0</Number>
+          <Key>DLGUARM</Key>
+        </SetRegEntry>
+        <SetRegEntry>
+          <Number>0</Number>
           <Key>ARMRTXEVENTFLAGS</Key>
           <Name>-L70 -Z18 -C0 -M0 -T1</Name>
         </SetRegEntry>
@@ -147,9 +151,9 @@
       <MemoryWindow1>
         <Mm>
           <WinNumber>1</WinNumber>
-          <SubType>0</SubType>
-          <ItemText>rxbuffer</ItemText>
-          <AccSizeX>0</AccSizeX>
+          <SubType>256</SubType>
+          <ItemText>0x08008001</ItemText>
+          <AccSizeX>2</AccSizeX>
         </Mm>
       </MemoryWindow1>
       <Tracepoint>

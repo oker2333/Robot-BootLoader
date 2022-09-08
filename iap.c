@@ -12,27 +12,6 @@ void Jump_to_APP(void)
 		}
 }
 
-static void Int2Str(char* str, int32_t intnum)
-{
-  uint32_t i, Div = 1000000000, j = 0, Status = 0;
-
-  for (i = 0; i < 10; i++)
-  {
-    str[j++] = (intnum / Div) + 48;
-
-    intnum = intnum % Div;
-    Div /= 10;
-    if ((str[j-1] == '0') & (Status == 0))
-    {
-      j = 0;
-    }
-    else
-    {
-      Status++;
-    }
-  }
-}
-
 uint8_t buf_1k[1024] ={0};
 
 int fputc(int ch, FILE *f)
@@ -53,37 +32,33 @@ void IAP_WriteFlag(uint32_t flag)
 	 flash_write_buffer(IAP_FLAG_ADDR, (uint8_t*)&flag,sizeof(uint32_t));
 }
 
-void Download2Flash(void)
+int32_t Download2Flash(void)
 {
-	  char Number[10] = {0};
 	  int32_t Size = 0;
-	
+		
 	  printf("\n\r Waiting for the file to be sent ... (press 'a' to abort)\n\r");
 	  Size = Ymodem_Receive(&buf_1k[0],APP_ADDRESS);
 		if (Size > 0)
 		{
 			printf("-------------------\n");
-			printf("\n\r Programming Completed Successfully!\n\r--------------------------------\r\n Name: ");
-			printf(FileName);
-			Int2Str(Number, Size);
-			printf("\n\r Size: ");
-			printf(Number);
-			printf(" Bytes\r\n");
+			printf("\n\r Programming Completed Successfully!\n\r--------------------------------\r\n Name: %s",FileName);
+			printf("\n\r Size: 0x%x Bytes\r\n",Size);
 		}
 		else if (Size == -1)
 		{
-			printf("\n\n\rThe image size is higher than the allowed space memory!\n\r");
+			printf("\n\rThe image size is higher than the allowed space memory!\n\r");
 		}
 		else if (Size == -2)
 		{
-			printf("\n\n\rVerification failed!\n\r");
+			printf("\n\rVerification failed!\n\r");
 		}
 		else if (Size == -3)
 		{
-			printf("\r\n\nAborted by user.\n\r");
+			printf("\r\nAborted by user.\n\r");
 		}
 		else
 		{
 			printf("\n\rFailed to receive the file!\n\r");
 		}
+		return Size;
 }

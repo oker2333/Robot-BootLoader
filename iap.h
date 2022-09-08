@@ -19,7 +19,7 @@ extern char FileName[FILE_NAME_LENGTH];
 uint32_t IAP_ReadFlag(void);
 void IAP_WriteFlag(uint32_t flag);
 
-void Download2Flash(void);
+int32_t Download2Flash(void);
 
 void Jump_to_APP(void);
 

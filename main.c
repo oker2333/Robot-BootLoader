@@ -25,9 +25,15 @@ int main(void)
 					 Jump_to_APP();
 					 break;
 				 case UPDATE_FLAG_DATA:
-					 Download2Flash();
+					 if(Download2Flash() > 0)
+					 {
+						  IAP_WriteFlag(APPRUN_FLAG_DATA);
+					 }
 					 break;
 				 case UPLOAD_FLAG_DATA:
+					 break;
+				 default:
+					 printf("No APP Data\n");
 					 break;
 				 
 			 }

@@ -14,6 +14,8 @@ void flash_write_pages(uint32_t address,uint32_t size)
 
 uint32_t flash_write_buffer(uint32_t address, uint8_t *data,uint32_t data_len)
 {
+	  fmc_state_enum fmc_state;
+	  uint32_t ret = 0;
 	  uint8_t remainder = 0;
 	  uint32_t write_value = 0;
 	  uint16_t half_word = 0;
@@ -31,12 +33,17 @@ uint32_t flash_write_buffer(uint32_t address, uint8_t *data,uint32_t data_len)
 		
 	  if(remainder){
 			  half_word = data[0] << 8;
-			  fmc_halfword_program(address, half_word);
-
+			  fmc_state = fmc_halfword_program(address, half_word);
+				
 				fmc_flag_clear(FMC_FLAG_BANK0_END);
 				fmc_flag_clear(FMC_FLAG_BANK0_WPERR);
 				fmc_flag_clear(FMC_FLAG_BANK0_PGERR);
-			  
+			
+				if(fmc_state != FMC_READY){
+				    ret = address;
+					goto exit;
+				}
+			
 			  address += 2;
 			  data_len -= remainder;
 			  data++;
@@ -46,12 +53,17 @@ uint32_t flash_write_buffer(uint32_t address, uint8_t *data,uint32_t data_len)
 		{
 			  write_value = (data[4*j + 0] << 0) | (data[4*j + 1] << 8) | (data[4*j + 2] << 16) | (data[4*j + 3] << 24);
 			  
-				fmc_word_program(address, write_value);
+				fmc_state = fmc_word_program(address, write_value);
 			  address += 4;
 			
 				fmc_flag_clear(FMC_FLAG_BANK0_END);
 				fmc_flag_clear(FMC_FLAG_BANK0_WPERR);
 				fmc_flag_clear(FMC_FLAG_BANK0_PGERR);
+			
+				if(fmc_state != FMC_READY){
+				    ret = address;
+					goto exit;
+				}
 		}
 		
 		if(data_len%4 != 0)
@@ -71,15 +83,21 @@ uint32_t flash_write_buffer(uint32_t address, uint8_t *data,uint32_t data_len)
 					 write_value = 0;
 					 break;
 			 }
-				fmc_word_program(address, write_value);
+				fmc_state = fmc_word_program(address, write_value);
 			
 				fmc_flag_clear(FMC_FLAG_BANK0_END);
 				fmc_flag_clear(FMC_FLAG_BANK0_WPERR);
 				fmc_flag_clear(FMC_FLAG_BANK0_PGERR);
+
+				if(fmc_state != FMC_READY){
+				    ret = address;
+					goto exit;
+				}			 
 		}
 		
+exit:
 	  fmc_lock();
-		return 0;
+		return ret;
 }
 
 void flash_read_buffer(uint32_t address, uint8_t *data,uint32_t data_len)

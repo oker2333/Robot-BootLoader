@@ -925,7 +925,7 @@ Removing Unused input sections from the image.
     Removing flash_rw.o(i.flash_read_byte), (6 bytes).
     Removing flash_rw.o(i.flash_read_dword), (6 bytes).
     Removing flash_rw.o(i.flash_read_word), (6 bytes).
-    Removing flash_rw.o(i.flash_write_buffer), (300 bytes).
+    Removing flash_rw.o(i.flash_write_buffer), (344 bytes).
     Removing flash_rw.o(i.flash_write_dword), (52 bytes).
     Removing flash_rw.o(i.flash_write_pages), (36 bytes).
     Removing flash_rw.o(i.flash_write_word), (52 bytes).
@@ -938,7 +938,7 @@ Removing Unused input sections from the image.
     Removing ymodem.o(i.Ymodem_Receive), (480 bytes).
     Removing ymodem.o(.bss), (256 bytes).
 
-653 unused section(s) (total 25190 bytes) removed from the image.
+653 unused section(s) (total 25234 bytes) removed from the image.
 
 ==============================================================================
 

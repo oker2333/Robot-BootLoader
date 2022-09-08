@@ -17,7 +17,7 @@
 #include "flash_rw.h"
 
 //extern variables
-uint8_t FileName[FILE_NAME_LENGTH];
+char FileName[FILE_NAME_LENGTH];
 
 //check if one byte rx successfully
 //key: variabl to store rx data

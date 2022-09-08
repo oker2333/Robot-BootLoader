@@ -1,5 +1,6 @@
 #include "gd32f30x_libopt.h"
 #include "bsp.h"
+#include "iap.h"
 
 /*
 	FLASH:256KB,start:0x8000000,size:0x40000
@@ -19,6 +20,15 @@ int main(void)
 		usart_config(115200);
 	
 		while(1){
-		
+			 switch(IAP_ReadFlag()){
+				 case APPRUN_FLAG_DATA:
+					 break;
+				 case UPDATE_FLAG_DATA:
+					 Download2Flash();
+					 break;
+				 case UPLOAD_FLAG_DATA:
+					 break;
+				 
+			 }
 		}
 }

@@ -1,5 +1,6 @@
 --cpu=Cortex-M4.fp.sp
 ".\objects\main.o"
+".\objects\iap.o"
 ".\objects\gd32f30x_it.o"
 ".\objects\system_gd32f30x.o"
 ".\objects\gd32f30x_adc.o"
@@ -30,7 +31,7 @@
 ".\objects\usart.o"
 ".\objects\flash_rw.o"
 ".\objects\ymodem.o"
---strict --scatter ".\Objects\GD32F303VCT6.sct"
+--library_type=microlib --strict --scatter ".\Objects\GD32F303VCT6.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list ".\Listings\GD32F303VCT6.map" -o .\Objects\GD32F303VCT6.axf

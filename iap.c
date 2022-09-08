@@ -1,5 +1,17 @@
 #include "iap.h"
 
+typedef void (*Jump_To_ADDR_t)(void);
+
+void Jump_to_APP(void)
+{
+		if (0x20000000 == ((*(volatile uint32_t*)APP_ADDRESS) & 0x2FFE0000))
+		{
+				Jump_To_ADDR_t Jump_To_Application = (Jump_To_ADDR_t)(*(volatile uint32_t*)(APP_ADDRESS + 4));
+				__set_MSP(*(volatile uint32_t*) APP_ADDRESS);
+				Jump_To_Application();
+		}
+}
+
 static void Int2Str(char* str, int32_t intnum)
 {
   uint32_t i, Div = 1000000000, j = 0, Status = 0;

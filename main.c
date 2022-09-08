@@ -18,10 +18,11 @@ int main(void)
 {
 	  nvic_priority_group_set(NVIC_PRIGROUP_PRE4_SUB0);
 		usart_config(115200);
-	
+		
 		while(1){
 			 switch(IAP_ReadFlag()){
 				 case APPRUN_FLAG_DATA:
+					 Jump_to_APP();
 					 break;
 				 case UPDATE_FLAG_DATA:
 					 Download2Flash();

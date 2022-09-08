@@ -17,6 +17,7 @@
 int main(void)
 {
 	  nvic_priority_group_set(NVIC_PRIGROUP_PRE4_SUB0);
+		__disable_irq();
 		usart_config(115200);
 		
 		while(1){

@@ -19,13 +19,10 @@ int main(void)
 	  nvic_priority_group_set(NVIC_PRIGROUP_PRE4_SUB0);
 		__disable_irq();
 		usart_config(115200);
-	  IAP_WriteFlag(UPDATE_FLAG_DATA);
-	  printf("Now check the iap flag\r\n");
 		
 		while(1){
 			 switch(IAP_ReadFlag()){
 				 case APPRUN_FLAG_DATA:
-					 printf("Start to Jump to APP\r\n");
 					 if(Jump_to_APP() > 0)
 					 {
 						  printf("Jump to APP Failed,Please Continue to Download BIN Files\r\n");
@@ -39,10 +36,9 @@ int main(void)
 					 }
 					 break;
 				 case UPLOAD_FLAG_DATA:
-					 printf("Start to Upload Bin File\r\n");
 					 break;
 				 default:
-					 printf("No APP Data\n");
+					 printf("The IAP Flag is Not Valid\r\n");
 					 break;
 				 
 			 }

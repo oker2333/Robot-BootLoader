@@ -2,7 +2,7 @@
 
 typedef void (*Jump_To_ADDR_t)(void);
 
-void Jump_to_APP(void)
+int32_t Jump_to_APP(void)
 {
 		if (0x20000000 == ((*(volatile uint32_t*)APP_ADDRESS) & 0x2FFE0000))
 		{
@@ -10,6 +10,7 @@ void Jump_to_APP(void)
 				__set_MSP(*(volatile uint32_t*) APP_ADDRESS);
 				Jump_To_Application();
 		}
+		return 1;
 }
 
 uint8_t buf_1k[1024] ={0};
@@ -40,9 +41,8 @@ int32_t Download2Flash(void)
 	  Size = Ymodem_Receive();
 		if (Size > 0)
 		{
-			printf("-------------------\n");
-			printf("\n\r Programming Completed Successfully!\n\r--------------------------------\r\n Name: %s",FileName);
-			printf("\n\r Size: 0x%x Bytes\r\n",Size);
+			printf("\n\r------------------- \n\r Programming Completed Successfully!\n\r Name: %s",FileName);
+			printf("\n\r Size: 0x%x Bytes\r\n------------------- \r\n",Size);
 		}
 		else if (Size == -1)
 		{

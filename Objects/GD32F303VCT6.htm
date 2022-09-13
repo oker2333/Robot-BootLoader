@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\GD32F303VCT6.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\GD32F303VCT6.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Sep 13 22:40:50 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Sep 13 23:10:12 2022
 <BR><P>
 <H3>Maximum Stack Usage =       1200 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -431,7 +431,7 @@ Global Symbols
 <P><STRONG><a name="[7]"></a>DebugMon_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, gd32f30x_it.o(i.DebugMon_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_gd32f30x_cl.o(RESET)
 </UL>
-<P><STRONG><a name="[5c]"></a>Download2Flash</STRONG> (Thumb, 90 bytes, Stack size 8 bytes, iap.o(i.Download2Flash))
+<P><STRONG><a name="[5c]"></a>Download2Flash</STRONG> (Thumb, 84 bytes, Stack size 8 bytes, iap.o(i.Download2Flash))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1200<LI>Call Chain = Download2Flash &rArr; Ymodem_Receive &rArr; atoi &rArr; strtol &rArr; _strtoul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ymodem_Receive
@@ -459,7 +459,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[7c]"></a>Jump_to_APP</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, iap.o(i.Jump_to_APP))
+<P><STRONG><a name="[7c]"></a>Jump_to_APP</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, iap.o(i.Jump_to_APP))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Jump_to_APP
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -627,7 +627,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_config
 </UL>
 
-<P><STRONG><a name="[4c]"></a>main</STRONG> (Thumb, 114 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[4c]"></a>main</STRONG> (Thumb, 136 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1200<LI>Call Chain = main &rArr; Download2Flash &rArr; Ymodem_Receive &rArr; atoi &rArr; strtol &rArr; _strtoul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_config

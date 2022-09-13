@@ -21,6 +21,6 @@ void IAP_WriteFlag(uint32_t flag);
 
 int32_t Download2Flash(void);
 
-void Jump_to_APP(void);
+int32_t Jump_to_APP(void);
 
 #endif

@@ -10,11 +10,14 @@ int32_t Jump_to_APP(void)
 			中断，则共有 32+16（系统异常） = 48 个向量，向上增大到 2 的整次幂后值为 64，因此地址
 			地址必须能被 64*4=256 整除，从而合法的起始地址可以是：0x0, 0x100, 0x200 等。
 		*/
-		if (0x20000000 == ((*(volatile uint32_t*)APP_ADDRESS) & 0x2FFE0000))
+		uint32_t jump_addr = APP_Jump_Address();
+
+		if (0x20000000 == ((*(volatile uint32_t*)jump_addr) & 0x2FFE0000))
 		{
 			  printf("Jump to APP\r\n");
-				Jump_To_ADDR_t Jump_To_Application = (Jump_To_ADDR_t)(*(volatile uint32_t*)(APP_ADDRESS + 4));
-				__set_MSP(*(volatile uint32_t*) APP_ADDRESS);
+			  Write_APP_Address();
+				Jump_To_ADDR_t Jump_To_Application = (Jump_To_ADDR_t)(*(volatile uint32_t*)(jump_addr + 4));
+				__set_MSP(*(volatile uint32_t*) jump_addr);
 				Jump_To_Application();
 		}
 		return 1;
@@ -40,12 +43,59 @@ void IAP_WriteFlag(uint32_t flag)
 	 flash_write_buffer(IAP_FLAG_ADDR, (uint8_t*)&flag,sizeof(uint32_t));
 }
 
+uint32_t APP_Jump_Address(void)
+{
+	 if(get_download_status())
+	 {
+		  return Read_APP_Download_Address();
+	 }
+	 return flash_read_word(APP_ADDR_ADDRESS);
+}
+
+uint32_t Read_APP_Download_Address(void)
+{
+	uint32_t download_addr = 0x00;
+	uint32_t cur_addr = flash_read_word(APP_ADDR_ADDRESS);
+	if(cur_addr == APP_A_ADDRESS)
+	{
+		 download_addr = APP_B_ADDRESS;
+	}
+	else if(cur_addr == APP_B_ADDRESS)
+	{
+		 download_addr = APP_A_ADDRESS;
+	}
+	else
+	{
+		 download_addr = APP_A_ADDRESS;
+	}
+	return download_addr;
+}
+
+void Write_APP_Address(void)
+{
+	 uint32_t jump_address = APP_Jump_Address();
+	 flash_write_buffer(APP_ADDR_ADDRESS, (uint8_t*)jump_address,sizeof(uint32_t));
+}
+
+static int32_t download_status = 0;
+
+void set_download_status(int32_t status)
+{
+	 download_status = status;
+}
+
+int32_t get_download_status(void)
+{
+	 return download_status;
+}
+
 int32_t Download2Flash(void)
 {
 	  int32_t Size = 0;
+		uint32_t download_addr = Read_APP_Download_Address();
 		
 	  printf("\n\r Waiting for the file to be sent ... (press 'a' to abort)\n\r");
-	  Size = Ymodem_Receive();
+	  Size = Ymodem_Receive(download_addr,APP_FLASH_SIZE);
 		if (Size > 0)
 		{
 			printf("\n\r------------------- \n\r Programming Completed Successfully!\n\r Name: %s",FileName);

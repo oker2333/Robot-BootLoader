@@ -9,17 +9,20 @@
 */
 
 /*
-	IAP start:0x0800 0000  size:32KB	(0x8000 Bytes)
-	APP start:0x0800 8000	 size:222KB	(0x37800 Bytes)
-	INF start:0x0803 f800  size:2KB		(0x800 Bytes)
+	IAP				 start:0x0800 0000(134217728)   size:16KB		(16384 Bytes)  (0x4000)
+	APP A 		 start:0x0800 4000(134234112)		size:116KB	(118784 Bytes) (0x1D000)
+	APP B 	   start:0x0802 1000(134352896)		size:116KB	(118784 Bytes) (0x1D000)
+	FLAG   		 start:0x0803 E000(134471680)		size:2KB		(2048 Bytes)	 (0x800)
+	APP ADDR	 start:0x0803 E800(134473728)		size:2KB		(2048 Bytes)	 (0x800)
+	INFO			 start:0x0803 F000(134475776)		size:4KB		(4096 Bytes)	 (0x1000)
 */
-
+uint32_t download_addr = 0;
 int main(void)
 {
 	  nvic_priority_group_set(NVIC_PRIGROUP_PRE4_SUB0);
 		__disable_irq();
 		usart_config(115200);
-		
+	  	
 		while(1){
 			 switch(IAP_ReadFlag()){
 				 case APPRUN_FLAG_DATA:
@@ -33,7 +36,9 @@ int main(void)
 					 if(Download2Flash() > 0)
 					 {
 						  IAP_WriteFlag(APPRUN_FLAG_DATA);
+						  set_download_status(1);
 					 }
+					 set_download_status(0);
 					 break;
 				 case UPLOAD_FLAG_DATA:
 					 break;

@@ -16,13 +16,13 @@
 	APP ADDR	 start:0x0803E800(134473728)		size:2KB		(2048 Bytes)	 (0x800)
 	INFO			 start:0x0803F000(134475776)		size:4KB		(4096 Bytes)	 (0x1000)
 */
-uint32_t download_addr = 0;
+
 int main(void)
 {
 	  nvic_priority_group_set(NVIC_PRIGROUP_PRE4_SUB0);
 		__disable_irq();
 		usart_config(115200);
-	  	
+
 		while(1){
 			 switch(IAP_ReadFlag()){
 				 case APPRUN_FLAG_DATA:

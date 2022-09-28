@@ -86,7 +86,7 @@ uint32_t APP_Download_Address(void)
 void Write_APP_Address(void)
 {
 	 uint32_t jump_address = APP_Jump_Address();
-	 flash_write_buffer(APP_ADDR_ADDRESS, (uint8_t*)jump_address,sizeof(uint32_t));
+	 flash_write_buffer(APP_ADDR_ADDRESS, (uint8_t*)&jump_address,sizeof(uint32_t));
 }
 
 static int32_t download_status = 0;

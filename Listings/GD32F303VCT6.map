@@ -448,7 +448,6 @@ Removing Unused input sections from the image.
 
     Removing main.o(.rev16_text), (4 bytes).
     Removing main.o(.revsh_text), (4 bytes).
-    Removing main.o(.data), (4 bytes).
     Removing iap.o(.rev16_text), (4 bytes).
     Removing iap.o(.revsh_text), (4 bytes).
     Removing gd32f30x_it.o(.rev16_text), (4 bytes).
@@ -742,7 +741,7 @@ Removing Unused input sections from the image.
     Removing cdrcmple.o(.text), (48 bytes).
     Removing depilogue.o(.text), (186 bytes).
 
-295 unused section(s) (total 10340 bytes) removed from the image.
+294 unused section(s) (total 10336 bytes) removed from the image.
 
 ==============================================================================
 
@@ -1200,119 +1199,119 @@ Memory Map of the image
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x08000000   0x08000000   0x00000150   Data   RO         2133    RESET               startup_gd32f30x_cl.o
-    0x08000150   0x08000150   0x00000000   Code   RO         2288  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
-    0x08000150   0x08000150   0x00000004   Code   RO         2586    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
-    0x08000154   0x08000154   0x00000004   Code   RO         2589    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
-    0x08000158   0x08000158   0x00000000   Code   RO         2591    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
-    0x08000158   0x08000158   0x00000000   Code   RO         2593    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
-    0x08000158   0x08000158   0x00000008   Code   RO         2594    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
-    0x08000160   0x08000160   0x00000000   Code   RO         2596    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
-    0x08000160   0x08000160   0x00000000   Code   RO         2598    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
-    0x08000160   0x08000160   0x00000004   Code   RO         2587    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
-    0x08000164   0x08000164   0x00000024   Code   RO         2134    .text               startup_gd32f30x_cl.o
-    0x08000188   0x08000188   0x00000024   Code   RO         2291    .text               mc_w.l(memcpya.o)
-    0x080001ac   0x080001ac   0x0000001a   Code   RO         2584    .text               mc_w.l(atoi.o)
-    0x080001c6   0x080001c6   0x00000062   Code   RO         2603    .text               mc_w.l(uldiv.o)
-    0x08000228   0x08000228   0x00000070   Code   RO         2614    .text               mc_w.l(strtol.o)
-    0x08000298   0x08000298   0x00000024   Code   RO         2627    .text               mc_w.l(init.o)
-    0x080002bc   0x080002bc   0x0000001e   Code   RO         2629    .text               mc_w.l(llshl.o)
-    0x080002da   0x080002da   0x00000020   Code   RO         2631    .text               mc_w.l(llushr.o)
+    0x08000000   0x08000000   0x00000150   Data   RO         2130    RESET               startup_gd32f30x_cl.o
+    0x08000150   0x08000150   0x00000000   Code   RO         2285  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x08000150   0x08000150   0x00000004   Code   RO         2583    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x08000154   0x08000154   0x00000004   Code   RO         2586    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x08000158   0x08000158   0x00000000   Code   RO         2588    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x08000158   0x08000158   0x00000000   Code   RO         2590    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x08000158   0x08000158   0x00000008   Code   RO         2591    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x08000160   0x08000160   0x00000000   Code   RO         2593    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
+    0x08000160   0x08000160   0x00000000   Code   RO         2595    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
+    0x08000160   0x08000160   0x00000004   Code   RO         2584    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x08000164   0x08000164   0x00000024   Code   RO         2131    .text               startup_gd32f30x_cl.o
+    0x08000188   0x08000188   0x00000024   Code   RO         2288    .text               mc_w.l(memcpya.o)
+    0x080001ac   0x080001ac   0x0000001a   Code   RO         2581    .text               mc_w.l(atoi.o)
+    0x080001c6   0x080001c6   0x00000062   Code   RO         2600    .text               mc_w.l(uldiv.o)
+    0x08000228   0x08000228   0x00000070   Code   RO         2611    .text               mc_w.l(strtol.o)
+    0x08000298   0x08000298   0x00000024   Code   RO         2624    .text               mc_w.l(init.o)
+    0x080002bc   0x080002bc   0x0000001e   Code   RO         2626    .text               mc_w.l(llshl.o)
+    0x080002da   0x080002da   0x00000020   Code   RO         2628    .text               mc_w.l(llushr.o)
     0x080002fa   0x080002fa   0x00000002   PAD
-    0x080002fc   0x080002fc   0x00000008   Code   RO         2635    .text               mc_w.l(ctype_o.o)
-    0x08000304   0x08000304   0x0000009e   Code   RO         2663    .text               mc_w.l(_strtoul.o)
-    0x080003a2   0x080003a2   0x0000001c   Code   RO         2667    .text               mc_w.l(_chval.o)
+    0x080002fc   0x080002fc   0x00000008   Code   RO         2632    .text               mc_w.l(ctype_o.o)
+    0x08000304   0x08000304   0x0000009e   Code   RO         2660    .text               mc_w.l(_strtoul.o)
+    0x080003a2   0x080003a2   0x0000001c   Code   RO         2664    .text               mc_w.l(_chval.o)
     0x080003be   0x080003be   0x00000002   PAD
-    0x080003c0   0x080003c0   0x00000034   Code   RO          159    i.APP_Download_Address  iap.o
-    0x080003f4   0x080003f4   0x00000030   Code   RO          160    i.APP_Jump_Address  iap.o
-    0x08000424   0x08000424   0x00000004   Code   RO          246    i.BusFault_Handler  gd32f30x_it.o
-    0x08000428   0x08000428   0x00000002   Code   RO          247    i.DebugMon_Handler  gd32f30x_it.o
+    0x080003c0   0x080003c0   0x00000034   Code   RO          156    i.APP_Download_Address  iap.o
+    0x080003f4   0x080003f4   0x00000030   Code   RO          157    i.APP_Jump_Address  iap.o
+    0x08000424   0x08000424   0x00000004   Code   RO          243    i.BusFault_Handler  gd32f30x_it.o
+    0x08000428   0x08000428   0x00000002   Code   RO          244    i.DebugMon_Handler  gd32f30x_it.o
     0x0800042a   0x0800042a   0x00000002   PAD
-    0x0800042c   0x0800042c   0x00000184   Code   RO          161    i.Download2Flash    iap.o
-    0x080005b0   0x080005b0   0x00000004   Code   RO          248    i.HardFault_Handler  gd32f30x_it.o
-    0x080005b4   0x080005b4   0x00000010   Code   RO          162    i.IAP_ReadFlag      iap.o
-    0x080005c4   0x080005c4   0x00000014   Code   RO          163    i.IAP_WriteFlag     iap.o
-    0x080005d8   0x080005d8   0x00000060   Code   RO          164    i.Jump_to_APP       iap.o
-    0x08000638   0x08000638   0x00000004   Code   RO          249    i.MemManage_Handler  gd32f30x_it.o
-    0x0800063c   0x0800063c   0x00000002   Code   RO          250    i.NMI_Handler       gd32f30x_it.o
-    0x0800063e   0x0800063e   0x00000022   Code   RO         2235    i.Receive_Byte      ymodem.o
-    0x08000660   0x08000660   0x000000aa   Code   RO         2236    i.Receive_Packet    ymodem.o
+    0x0800042c   0x0800042c   0x00000184   Code   RO          158    i.Download2Flash    iap.o
+    0x080005b0   0x080005b0   0x00000004   Code   RO          245    i.HardFault_Handler  gd32f30x_it.o
+    0x080005b4   0x080005b4   0x00000010   Code   RO          159    i.IAP_ReadFlag      iap.o
+    0x080005c4   0x080005c4   0x00000014   Code   RO          160    i.IAP_WriteFlag     iap.o
+    0x080005d8   0x080005d8   0x00000060   Code   RO          161    i.Jump_to_APP       iap.o
+    0x08000638   0x08000638   0x00000004   Code   RO          246    i.MemManage_Handler  gd32f30x_it.o
+    0x0800063c   0x0800063c   0x00000002   Code   RO          247    i.NMI_Handler       gd32f30x_it.o
+    0x0800063e   0x0800063e   0x00000022   Code   RO         2232    i.Receive_Byte      ymodem.o
+    0x08000660   0x08000660   0x000000aa   Code   RO         2233    i.Receive_Packet    ymodem.o
     0x0800070a   0x0800070a   0x00000002   PAD
-    0x0800070c   0x0800070c   0x00000024   Code   RO         2237    i.Send_Byte         ymodem.o
-    0x08000730   0x08000730   0x00000024   Code   RO         2238    i.SerialKeyPressed  ymodem.o
-    0x08000754   0x08000754   0x00000070   Code   RO          300    i.SystemInit        system_gd32f30x.o
-    0x080007c4   0x080007c4   0x00000004   Code   RO          251    i.UsageFault_Handler  gd32f30x_it.o
-    0x080007c8   0x080007c8   0x00000018   Code   RO          165    i.Write_APP_Address  iap.o
-    0x080007e0   0x080007e0   0x0000021c   Code   RO         2239    i.Ymodem_Receive    ymodem.o
-    0x080009fc   0x080009fc   0x00000020   Code   RO         2428    i.__0printf$5       mc_w.l(printf5.o)
-    0x08000a1c   0x08000a1c   0x00000008   Code   RO         2607    i.__aeabi_errno_addr  mc_w.l(errno.o)
-    0x08000a24   0x08000a24   0x0000000e   Code   RO         2671    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x08000a32   0x08000a32   0x00000002   Code   RO         2672    i.__scatterload_null  mc_w.l(handlers.o)
-    0x08000a34   0x08000a34   0x0000000e   Code   RO         2673    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x0800070c   0x0800070c   0x00000024   Code   RO         2234    i.Send_Byte         ymodem.o
+    0x08000730   0x08000730   0x00000024   Code   RO         2235    i.SerialKeyPressed  ymodem.o
+    0x08000754   0x08000754   0x00000070   Code   RO          297    i.SystemInit        system_gd32f30x.o
+    0x080007c4   0x080007c4   0x00000004   Code   RO          248    i.UsageFault_Handler  gd32f30x_it.o
+    0x080007c8   0x080007c8   0x00000018   Code   RO          162    i.Write_APP_Address  iap.o
+    0x080007e0   0x080007e0   0x0000021c   Code   RO         2236    i.Ymodem_Receive    ymodem.o
+    0x080009fc   0x080009fc   0x00000020   Code   RO         2425    i.__0printf$5       mc_w.l(printf5.o)
+    0x08000a1c   0x08000a1c   0x00000008   Code   RO         2604    i.__aeabi_errno_addr  mc_w.l(errno.o)
+    0x08000a24   0x08000a24   0x0000000e   Code   RO         2668    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x08000a32   0x08000a32   0x00000002   Code   RO         2669    i.__scatterload_null  mc_w.l(handlers.o)
+    0x08000a34   0x08000a34   0x0000000e   Code   RO         2670    i.__scatterload_zeroinit  mc_w.l(handlers.o)
     0x08000a42   0x08000a42   0x00000002   PAD
-    0x08000a44   0x08000a44   0x000002c0   Code   RO         2435    i._printf_core      mc_w.l(printf5.o)
-    0x08000d04   0x08000d04   0x00000006   Code   RO         2173    i.flash_read_word   flash_rw.o
-    0x08000d0a   0x08000d0a   0x00000158   Code   RO         2174    i.flash_write_buffer  flash_rw.o
-    0x08000e62   0x08000e62   0x00000022   Code   RO          875    i.fmc_bank0_ready_wait  gd32f30x_fmc.o
-    0x08000e84   0x08000e84   0x00000030   Code   RO          876    i.fmc_bank0_state_get  gd32f30x_fmc.o
-    0x08000eb4   0x08000eb4   0x00000022   Code   RO          880    i.fmc_bank1_ready_wait  gd32f30x_fmc.o
+    0x08000a44   0x08000a44   0x000002c0   Code   RO         2432    i._printf_core      mc_w.l(printf5.o)
+    0x08000d04   0x08000d04   0x00000006   Code   RO         2170    i.flash_read_word   flash_rw.o
+    0x08000d0a   0x08000d0a   0x00000158   Code   RO         2171    i.flash_write_buffer  flash_rw.o
+    0x08000e62   0x08000e62   0x00000022   Code   RO          872    i.fmc_bank0_ready_wait  gd32f30x_fmc.o
+    0x08000e84   0x08000e84   0x00000030   Code   RO          873    i.fmc_bank0_state_get  gd32f30x_fmc.o
+    0x08000eb4   0x08000eb4   0x00000022   Code   RO          877    i.fmc_bank1_ready_wait  gd32f30x_fmc.o
     0x08000ed6   0x08000ed6   0x00000002   PAD
-    0x08000ed8   0x08000ed8   0x00000030   Code   RO          881    i.fmc_bank1_state_get  gd32f30x_fmc.o
-    0x08000f08   0x08000f08   0x00000020   Code   RO          883    i.fmc_flag_clear    gd32f30x_fmc.o
-    0x08000f28   0x08000f28   0x000000c0   Code   RO          885    i.fmc_halfword_program  gd32f30x_fmc.o
-    0x08000fe8   0x08000fe8   0x0000002c   Code   RO          890    i.fmc_lock          gd32f30x_fmc.o
-    0x08001014   0x08001014   0x000000ec   Code   RO          892    i.fmc_page_erase    gd32f30x_fmc.o
-    0x08001100   0x08001100   0x00000044   Code   RO          893    i.fmc_unlock        gd32f30x_fmc.o
-    0x08001144   0x08001144   0x000000c0   Code   RO          894    i.fmc_word_program  gd32f30x_fmc.o
-    0x08001204   0x08001204   0x00000024   Code   RO          166    i.fputc             iap.o
-    0x08001228   0x08001228   0x00000050   Code   RO         2556    i.free              mc_w.l(malloc.o)
-    0x08001278   0x08001278   0x0000000c   Code   RO          167    i.get_download_status  iap.o
-    0x08001284   0x08001284   0x000000bc   Code   RO         1108    i.gpio_init         gd32f30x_gpio.o
+    0x08000ed8   0x08000ed8   0x00000030   Code   RO          878    i.fmc_bank1_state_get  gd32f30x_fmc.o
+    0x08000f08   0x08000f08   0x00000020   Code   RO          880    i.fmc_flag_clear    gd32f30x_fmc.o
+    0x08000f28   0x08000f28   0x000000c0   Code   RO          882    i.fmc_halfword_program  gd32f30x_fmc.o
+    0x08000fe8   0x08000fe8   0x0000002c   Code   RO          887    i.fmc_lock          gd32f30x_fmc.o
+    0x08001014   0x08001014   0x000000ec   Code   RO          889    i.fmc_page_erase    gd32f30x_fmc.o
+    0x08001100   0x08001100   0x00000044   Code   RO          890    i.fmc_unlock        gd32f30x_fmc.o
+    0x08001144   0x08001144   0x000000c0   Code   RO          891    i.fmc_word_program  gd32f30x_fmc.o
+    0x08001204   0x08001204   0x00000024   Code   RO          163    i.fputc             iap.o
+    0x08001228   0x08001228   0x00000050   Code   RO         2553    i.free              mc_w.l(malloc.o)
+    0x08001278   0x08001278   0x0000000c   Code   RO          164    i.get_download_status  iap.o
+    0x08001284   0x08001284   0x000000bc   Code   RO         1105    i.gpio_init         gd32f30x_gpio.o
     0x08001340   0x08001340   0x000000fc   Code   RO            3    i.main              main.o
-    0x0800143c   0x0800143c   0x0000006c   Code   RO         2557    i.malloc            mc_w.l(malloc.o)
-    0x080014a8   0x080014a8   0x00000014   Code   RO         1227    i.nvic_priority_group_set  gd32f30x_misc.o
-    0x080014bc   0x080014bc   0x00000158   Code   RO         1290    i.rcu_clock_freq_get  gd32f30x_rcu.o
-    0x08001614   0x08001614   0x00000020   Code   RO         1308    i.rcu_periph_clock_enable  gd32f30x_rcu.o
-    0x08001634   0x08001634   0x00000020   Code   RO         1311    i.rcu_periph_reset_disable  gd32f30x_rcu.o
-    0x08001654   0x08001654   0x00000020   Code   RO         1312    i.rcu_periph_reset_enable  gd32f30x_rcu.o
-    0x08001674   0x08001674   0x0000000c   Code   RO          168    i.set_download_status  iap.o
-    0x08001680   0x08001680   0x00000114   Code   RO          301    i.system_clock_120m_hxtal  system_gd32f30x.o
-    0x08001794   0x08001794   0x00000008   Code   RO          302    i.system_clock_config  system_gd32f30x.o
-    0x0800179c   0x0800179c   0x00000090   Code   RO         1820    i.usart_baudrate_set  gd32f30x_usart.o
-    0x0800182c   0x0800182c   0x00000090   Code   RO         2140    i.usart_config      usart.o
-    0x080018bc   0x080018bc   0x0000000a   Code   RO         1823    i.usart_data_receive  gd32f30x_usart.o
-    0x080018c6   0x080018c6   0x00000008   Code   RO         1824    i.usart_data_transmit  gd32f30x_usart.o
+    0x0800143c   0x0800143c   0x0000006c   Code   RO         2554    i.malloc            mc_w.l(malloc.o)
+    0x080014a8   0x080014a8   0x00000014   Code   RO         1224    i.nvic_priority_group_set  gd32f30x_misc.o
+    0x080014bc   0x080014bc   0x00000158   Code   RO         1287    i.rcu_clock_freq_get  gd32f30x_rcu.o
+    0x08001614   0x08001614   0x00000020   Code   RO         1305    i.rcu_periph_clock_enable  gd32f30x_rcu.o
+    0x08001634   0x08001634   0x00000020   Code   RO         1308    i.rcu_periph_reset_disable  gd32f30x_rcu.o
+    0x08001654   0x08001654   0x00000020   Code   RO         1309    i.rcu_periph_reset_enable  gd32f30x_rcu.o
+    0x08001674   0x08001674   0x0000000c   Code   RO          165    i.set_download_status  iap.o
+    0x08001680   0x08001680   0x00000114   Code   RO          298    i.system_clock_120m_hxtal  system_gd32f30x.o
+    0x08001794   0x08001794   0x00000008   Code   RO          299    i.system_clock_config  system_gd32f30x.o
+    0x0800179c   0x0800179c   0x00000090   Code   RO         1817    i.usart_baudrate_set  gd32f30x_usart.o
+    0x0800182c   0x0800182c   0x00000090   Code   RO         2137    i.usart_config      usart.o
+    0x080018bc   0x080018bc   0x0000000a   Code   RO         1820    i.usart_data_receive  gd32f30x_usart.o
+    0x080018c6   0x080018c6   0x00000008   Code   RO         1821    i.usart_data_transmit  gd32f30x_usart.o
     0x080018ce   0x080018ce   0x00000002   PAD
-    0x080018d0   0x080018d0   0x00000090   Code   RO         1825    i.usart_deinit      gd32f30x_usart.o
-    0x08001960   0x08001960   0x0000000a   Code   RO         1829    i.usart_enable      gd32f30x_usart.o
-    0x0800196a   0x0800196a   0x0000001e   Code   RO         1831    i.usart_flag_get    gd32f30x_usart.o
-    0x08001988   0x08001988   0x00000010   Code   RO         1835    i.usart_hardware_flow_cts_config  gd32f30x_usart.o
-    0x08001998   0x08001998   0x00000010   Code   RO         1836    i.usart_hardware_flow_rts_config  gd32f30x_usart.o
-    0x080019a8   0x080019a8   0x00000010   Code   RO         1851    i.usart_parity_config  gd32f30x_usart.o
-    0x080019b8   0x080019b8   0x00000010   Code   RO         1853    i.usart_receive_config  gd32f30x_usart.o
-    0x080019c8   0x080019c8   0x00000010   Code   RO         1863    i.usart_stop_bit_set  gd32f30x_usart.o
-    0x080019d8   0x080019d8   0x00000010   Code   RO         1867    i.usart_transmit_config  gd32f30x_usart.o
-    0x080019e8   0x080019e8   0x00000010   Code   RO         1868    i.usart_word_length_set  gd32f30x_usart.o
-    0x080019f8   0x080019f8   0x00000081   Data   RO         2636    .constdata          mc_w.l(ctype_o.o)
+    0x080018d0   0x080018d0   0x00000090   Code   RO         1822    i.usart_deinit      gd32f30x_usart.o
+    0x08001960   0x08001960   0x0000000a   Code   RO         1826    i.usart_enable      gd32f30x_usart.o
+    0x0800196a   0x0800196a   0x0000001e   Code   RO         1828    i.usart_flag_get    gd32f30x_usart.o
+    0x08001988   0x08001988   0x00000010   Code   RO         1832    i.usart_hardware_flow_cts_config  gd32f30x_usart.o
+    0x08001998   0x08001998   0x00000010   Code   RO         1833    i.usart_hardware_flow_rts_config  gd32f30x_usart.o
+    0x080019a8   0x080019a8   0x00000010   Code   RO         1848    i.usart_parity_config  gd32f30x_usart.o
+    0x080019b8   0x080019b8   0x00000010   Code   RO         1850    i.usart_receive_config  gd32f30x_usart.o
+    0x080019c8   0x080019c8   0x00000010   Code   RO         1860    i.usart_stop_bit_set  gd32f30x_usart.o
+    0x080019d8   0x080019d8   0x00000010   Code   RO         1864    i.usart_transmit_config  gd32f30x_usart.o
+    0x080019e8   0x080019e8   0x00000010   Code   RO         1865    i.usart_word_length_set  gd32f30x_usart.o
+    0x080019f8   0x080019f8   0x00000081   Data   RO         2633    .constdata          mc_w.l(ctype_o.o)
     0x08001a79   0x08001a79   0x00000003   PAD
-    0x08001a7c   0x08001a7c   0x00000004   Data   RO         2637    .constdata          mc_w.l(ctype_o.o)
-    0x08001a80   0x08001a80   0x00000048   Data   RO          169    .conststring        iap.o
-    0x08001ac8   0x08001ac8   0x00000020   Data   RO         2669    Region$$Table       anon$$obj.o
+    0x08001a7c   0x08001a7c   0x00000004   Data   RO         2634    .constdata          mc_w.l(ctype_o.o)
+    0x08001a80   0x08001a80   0x00000048   Data   RO          166    .conststring        iap.o
+    0x08001ac8   0x08001ac8   0x00000020   Data   RO         2666    Region$$Table       anon$$obj.o
 
 
     Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08001ae8, Size: 0x00008518, Max: 0x0000c000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x08001ae8   0x00000004   Data   RW          170    .data               iap.o
-    0x20000004   0x08001aec   0x00000004   Data   RW         2600    .data               mc_w.l(stdout.o)
-    0x20000008   0x08001af0   0x00000004   Data   RW         2605    .data               mc_w.l(mvars.o)
-    0x2000000c   0x08001af4   0x00000004   Data   RW         2606    .data               mc_w.l(mvars.o)
-    0x20000010   0x08001af8   0x00000004   Data   RW         2610    .data               mc_w.l(errno.o)
-    0x20000014        -       0x00000100   Zero   RW         2240    .bss                ymodem.o
+    0x20000000   0x08001ae8   0x00000004   Data   RW          167    .data               iap.o
+    0x20000004   0x08001aec   0x00000004   Data   RW         2597    .data               mc_w.l(stdout.o)
+    0x20000008   0x08001af0   0x00000004   Data   RW         2602    .data               mc_w.l(mvars.o)
+    0x2000000c   0x08001af4   0x00000004   Data   RW         2603    .data               mc_w.l(mvars.o)
+    0x20000010   0x08001af8   0x00000004   Data   RW         2607    .data               mc_w.l(errno.o)
+    0x20000014        -       0x00000100   Zero   RW         2237    .bss                ymodem.o
     0x20000114   0x08001afc   0x00000004   PAD
-    0x20000118        -       0x00008000   Zero   RW         2132    HEAP                startup_gd32f30x_cl.o
-    0x20008118        -       0x00000400   Zero   RW         2131    STACK               startup_gd32f30x_cl.o
+    0x20000118        -       0x00008000   Zero   RW         2129    HEAP                startup_gd32f30x_cl.o
+    0x20008118        -       0x00000400   Zero   RW         2128    STACK               startup_gd32f30x_cl.o
 
 
 ==============================================================================

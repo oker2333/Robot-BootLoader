@@ -35,18 +35,20 @@ int main(void)
 				 case UPDATE_FLAG_DATA:
 					 if(Download2Flash() > 0)
 					 {
-						  IAP_WriteFlag(APPRUN_FLAG_DATA);
 						  set_download_status(1);
 					 }
 					 else{
 						  set_download_status(0);
 					 }
+					 IAP_WriteFlag(APPRUN_FLAG_DATA);
 					 printf("download_status = %d\r\n",get_download_status());
 					 break;
-				 case UPLOAD_FLAG_DATA:
+				 case UPLOAD_FLAG_DATA:	
 					 break;
 				 default:
-					 printf("The IAP Flag is Not Valid\r\n");
+					 //原始烧录，无标志位
+					 IAP_WriteFlag(APPRUN_FLAG_DATA);
+					 printf("GD32F303 is original\r\n");
 					 break;
 				 
 			 }

@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\GD32F303VCT6.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\GD32F303VCT6.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Sep 28 00:25:35 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Sep 28 21:08:58 2022
 <BR><P>
 <H3>Maximum Stack Usage =       1216 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -425,12 +425,20 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_strtoul
 </UL>
 
-<P><STRONG><a name="[5c]"></a>APP_Jump_Address</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, iap.o(i.APP_Jump_Address))
-<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = APP_Jump_Address &rArr; Read_APP_Download_Address
+<P><STRONG><a name="[5c]"></a>APP_Download_Address</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, iap.o(i.APP_Download_Address))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = APP_Download_Address
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_read_word
-<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_download_status
-<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_APP_Download_Address
+<BR>[Calls]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_read_word
+</UL>
+<BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APP_Jump_Address
+<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Download2Flash
+</UL>
+
+<P><STRONG><a name="[5e]"></a>APP_Jump_Address</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, iap.o(i.APP_Jump_Address))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = APP_Jump_Address &rArr; APP_Download_Address
+</UL>
+<BR>[Calls]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APP_Download_Address
+<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_download_status
 </UL>
 <BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Write_APP_Address
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Jump_to_APP
@@ -442,11 +450,11 @@ Global Symbols
 <P><STRONG><a name="[7]"></a>DebugMon_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, gd32f30x_it.o(i.DebugMon_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_gd32f30x_cl.o(RESET)
 </UL>
-<P><STRONG><a name="[60]"></a>Download2Flash</STRONG> (Thumb, 96 bytes, Stack size 16 bytes, iap.o(i.Download2Flash))
+<P><STRONG><a name="[60]"></a>Download2Flash</STRONG> (Thumb, 104 bytes, Stack size 16 bytes, iap.o(i.Download2Flash))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1216<LI>Call Chain = Download2Flash &rArr; Ymodem_Receive &rArr; atoi &rArr; strtol &rArr; _strtoul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ymodem_Receive
-<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_APP_Download_Address
+<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APP_Download_Address
 <LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -458,7 +466,7 @@ Global Symbols
 <P><STRONG><a name="[63]"></a>IAP_ReadFlag</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, iap.o(i.IAP_ReadFlag))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = IAP_ReadFlag
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_read_word
+<BR>[Calls]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_read_word
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -471,11 +479,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[66]"></a>Jump_to_APP</STRONG> (Thumb, 48 bytes, Stack size 16 bytes, iap.o(i.Jump_to_APP))
+<P><STRONG><a name="[66]"></a>Jump_to_APP</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, iap.o(i.Jump_to_APP))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = Jump_to_APP &rArr; Write_APP_Address &rArr; flash_write_buffer &rArr; fmc_word_program &rArr; fmc_bank1_ready_wait
 </UL>
 <BR>[Calls]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Write_APP_Address
-<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APP_Jump_Address
+<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APP_Jump_Address
 <LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -487,15 +495,6 @@ Global Symbols
 <P><STRONG><a name="[1]"></a>NMI_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, gd32f30x_it.o(i.NMI_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_gd32f30x_cl.o(RESET)
 </UL>
-<P><STRONG><a name="[5e]"></a>Read_APP_Download_Address</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, iap.o(i.Read_APP_Download_Address))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Read_APP_Download_Address
-</UL>
-<BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_read_word
-</UL>
-<BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APP_Jump_Address
-<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Download2Flash
-</UL>
-
 <P><STRONG><a name="[4d]"></a>SystemInit</STRONG> (Thumb, 100 bytes, Stack size 8 bytes, system_gd32f30x.o(i.SystemInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = SystemInit &rArr; system_clock_config
 </UL>
@@ -510,7 +509,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = Write_APP_Address &rArr; flash_write_buffer &rArr; fmc_word_program &rArr; fmc_bank1_ready_wait
 </UL>
 <BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_write_buffer
-<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APP_Jump_Address
+<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APP_Jump_Address
 </UL>
 <BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Jump_to_APP
 </UL>
@@ -557,9 +556,8 @@ Global Symbols
 
 <P><STRONG><a name="[a1]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[5f]"></a>flash_read_word</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, flash_rw.o(i.flash_read_word))
-<BR><BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_APP_Download_Address
-<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APP_Jump_Address
+<P><STRONG><a name="[5d]"></a>flash_read_word</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, flash_rw.o(i.flash_read_word))
+<BR><BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APP_Download_Address
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IAP_ReadFlag
 </UL>
 
@@ -659,8 +657,9 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ymodem_Receive
 </UL>
 
-<P><STRONG><a name="[5d]"></a>get_download_status</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, iap.o(i.get_download_status))
-<BR><BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APP_Jump_Address
+<P><STRONG><a name="[5f]"></a>get_download_status</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, iap.o(i.get_download_status))
+<BR><BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APP_Jump_Address
+<LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[86]"></a>gpio_init</STRONG> (Thumb, 188 bytes, Stack size 20 bytes, gd32f30x_gpio.o(i.gpio_init))
@@ -669,12 +668,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_config
 </UL>
 
-<P><STRONG><a name="[4c]"></a>main</STRONG> (Thumb, 120 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[4c]"></a>main</STRONG> (Thumb, 138 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1216<LI>Call Chain = main &rArr; Download2Flash &rArr; Ymodem_Receive &rArr; atoi &rArr; strtol &rArr; _strtoul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_config
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_download_status
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nvic_priority_group_set
+<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_download_status
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Jump_to_APP
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IAP_WriteFlag
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IAP_ReadFlag

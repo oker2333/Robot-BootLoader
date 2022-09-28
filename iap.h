@@ -14,12 +14,15 @@
 #define UPDATE_FLAG_DATA      0xEEEE   //下载标志的数据
 #define UPLOAD_FLAG_DATA      0xDDDD   //上传标志的数据
 
+typedef void (*Jump_To_ADDR_t)(void);
+
+
 extern char FileName[FILE_NAME_LENGTH];
 
 uint32_t IAP_ReadFlag(void);
 void IAP_WriteFlag(uint32_t flag);
 
-uint32_t Read_APP_Download_Address(void);
+uint32_t APP_Download_Address(void);
 void Write_APP_Address(void);
 
 void set_download_status(int32_t status);

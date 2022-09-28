@@ -1,6 +1,5 @@
 #include "iap.h"
 
-typedef void (*Jump_To_ADDR_t)(void);
 
 int32_t Jump_to_APP(void)
 {
@@ -11,19 +10,19 @@ int32_t Jump_to_APP(void)
 			地址必须能被 64*4=256 整除，从而合法的起始地址可以是：0x0, 0x100, 0x200 等。
 		*/
 		uint32_t jump_addr = APP_Jump_Address();
-
+		printf("jump_addr = 0x%x\n",jump_addr);		//考虑修改APP起始地址修复bug，将APP直接下载到起始地址，使用IAP跳转
+	  
 		if (0x20000000 == ((*(volatile uint32_t*)jump_addr) & 0x2FFE0000))
 		{
 			  printf("Jump to APP\r\n");
 			  Write_APP_Address();
+			  //考虑加延时修复bug
 				Jump_To_ADDR_t Jump_To_Application = (Jump_To_ADDR_t)(*(volatile uint32_t*)(jump_addr + 4));
 				__set_MSP(*(volatile uint32_t*) jump_addr);
 				Jump_To_Application();
 		}
 		return 1;
 }
-
-uint8_t buf_1k[1024] ={0};
 
 int fputc(int ch, FILE *f)
 {
@@ -45,14 +44,27 @@ void IAP_WriteFlag(uint32_t flag)
 
 uint32_t APP_Jump_Address(void)
 {
+	 uint32_t jump_address = IAP_ADDRESS;
+	 uint32_t download_addr = APP_Download_Address();
+	 
 	 if(get_download_status())
 	 {
-		  return Read_APP_Download_Address();
+		  return download_addr;
 	 }
-	 return flash_read_word(APP_ADDR_ADDRESS);
+	 
+	 if(download_addr == APP_A_ADDRESS)
+	 {
+		  jump_address = APP_B_ADDRESS;
+	 }
+	 else
+	 {
+		   jump_address = APP_A_ADDRESS;
+	 }
+	
+	 return jump_address;
 }
 
-uint32_t Read_APP_Download_Address(void)
+uint32_t APP_Download_Address(void)
 {
 	uint32_t download_addr = 0x00;
 	uint32_t cur_addr = flash_read_word(APP_ADDR_ADDRESS);
@@ -92,8 +104,9 @@ int32_t get_download_status(void)
 int32_t Download2Flash(void)
 {
 	  int32_t Size = 0;
-		uint32_t download_addr = Read_APP_Download_Address();
-		
+		uint32_t download_addr = APP_Download_Address();
+		printf("download_addr = 0x%x\n",download_addr);
+	
 	  printf("\n\r Waiting for the file to be sent ... (press 'a' to abort)\n\r");
 	  Size = Ymodem_Receive(download_addr,APP_FLASH_SIZE);
 		if (Size > 0)

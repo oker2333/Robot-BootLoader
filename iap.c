@@ -18,6 +18,10 @@ int32_t Jump_to_APP(void)
 			  Write_APP_Address();
 			  //¿¼ÂÇ¼ÓÑÓÊ±ÐÞ¸´bug
 				Jump_To_ADDR_t Jump_To_Application = (Jump_To_ADDR_t)(*(volatile uint32_t*)(jump_addr + 4));
+			
+				uint32_t offset = *((volatile uint32_t*)APP_ADDR_ADDRESS) - FLASH_BASE_ADDR;
+				nvic_vector_table_set(NVIC_VECTTAB_FLASH, offset);
+			  
 				__set_MSP(*(volatile uint32_t*) jump_addr);
 				Jump_To_Application();
 		}

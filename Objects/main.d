@@ -1,4 +1,5 @@
 .\objects\main.o: main.c
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: gd32f30x_libopt.h
 .\objects\main.o: .\GD32F30x_standard_peripheral\Include\gd32f30x_rcu.h
 .\objects\main.o: .\CMSIS\GD32F30x\Include\gd32f30x.h
@@ -38,7 +39,3 @@
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\main.o: iap.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\main.o: .\YModem\ymodem.h
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\main.o: iap_config.h

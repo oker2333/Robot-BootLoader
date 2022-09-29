@@ -3,6 +3,14 @@
 #include "usart.h"
 #include "gd32f30x_libopt.h"
 
+int fputc(int ch, FILE *f)
+{
+	  (void)f;
+    usart_data_transmit(USART0, ch);
+    while(RESET == usart_flag_get(USART0, USART_FLAG_TBE));
+	  return 0;
+}
+
 void usart_config(uint32_t baudval)
 {
 		rcu_periph_clock_enable(RCU_GPIOA);	//enable GPIO clock, PA9/PA10

@@ -40,7 +40,8 @@ int32_t Jump_to_APP(void)
 		if (0x20000000 == ((*(volatile uint32_t*)jump_addr) & 0x2FFE0000))
 		{
 			  printf("Now Jump To APP\r\n");
-
+				usart_disable(USART0);
+			  
 				Jump_To_ADDR_t Jump_To_Application = (Jump_To_ADDR_t)(*(volatile uint32_t*)(jump_addr + 4));
 			
 				uint32_t offset = *((volatile uint32_t*)APP_ADDR_ADDRESS) - FLASH_BASE_ADDR;

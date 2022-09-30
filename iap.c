@@ -2,50 +2,44 @@
 #include "iap_config.h"
 #include "gd32f30x_libopt.h"
 
-uint32_t APP_Download_Address(void)
+fmc_state_enum flash_write_word(uint32_t address, uint32_t data)
 {
-	uint32_t download_addr = 0x00;
-	uint32_t cur_addr = *((uint32_t*)APP_ADDR_ADDRESS);
-	if(cur_addr == APP_A_ADDRESS)
-	{
-		 download_addr = APP_B_ADDRESS;
-	}
-	else if(cur_addr == APP_B_ADDRESS)
-	{
-		 download_addr = APP_A_ADDRESS;
-	}
-	else
-	{
-		 download_addr = APP_A_ADDRESS;
-	}
-	return download_addr;
+	  fmc_state_enum state;
+		
+    fmc_unlock();
+		state = fmc_word_program(address, data);
+	
+    fmc_flag_clear(FMC_FLAG_BANK0_END);
+    fmc_flag_clear(FMC_FLAG_BANK0_WPERR);
+    fmc_flag_clear(FMC_FLAG_BANK0_PGERR);
+	
+	  fmc_lock();
+		
+		return state;
 }
 
 uint32_t APP_Jump_Address(void)
 {
-	 uint32_t jump_address = IAP_ADDRESS;
-	 uint32_t download_addr = APP_Download_Address();
-	 
-	 if(download_addr == APP_A_ADDRESS)
-	 {
-		  jump_address = APP_B_ADDRESS;
-	 }
-	 else
-	 {
-		   jump_address = APP_A_ADDRESS;
-	 }
+	 uint32_t jump_address = *((uint32_t*)APP_ADDR_ADDRESS);
 	
-	 return jump_address;
+	 if((jump_address == APP_A_ADDRESS) || (jump_address == APP_B_ADDRESS))
+	 {
+		  return jump_address;
+	 }
+	 printf("APP_ADDR doesn't exist,the default address is APP_A_ADDRESS\r\n");
+	 flash_write_word(APP_ADDR_ADDRESS,APP_A_ADDRESS);		//用于第一次ota升级时，A分区程序判断当前程序所处地址
+	 
+	 return APP_A_ADDRESS;			//初次烧录，app address未写入，用于直接跳转至A分区
 }
 
 int32_t Jump_to_APP(void)
 {
 		uint32_t jump_addr = APP_Jump_Address();
-		printf("jump_addr = 0x%x\n",jump_addr);
+		printf("jump_addr = 0x%x\r\n",jump_addr);
 	  
 		if (0x20000000 == ((*(volatile uint32_t*)jump_addr) & 0x2FFE0000))
 		{
-			  printf("Jump to APP\r\n");
+			  printf("Now Jump To APP\r\n");
 
 				Jump_To_ADDR_t Jump_To_Application = (Jump_To_ADDR_t)(*(volatile uint32_t*)(jump_addr + 4));
 			

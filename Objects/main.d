@@ -35,7 +35,5 @@
 .\objects\main.o: .\GD32F30x_standard_peripheral\Include\gd32f30x_exmc.h
 .\objects\main.o: .\Hardware\bsp.h
 .\objects\main.o: .\Hardware\usart.h
-.\objects\main.o: .\Hardware\flash_rw.h
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\main.o: iap.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

@@ -8,7 +8,7 @@
 int main(void)
 {
 		__disable_irq();
-		usart_config(460800);
+		usart_config(3000000);
 	  
 		Jump_to_APP();
 }

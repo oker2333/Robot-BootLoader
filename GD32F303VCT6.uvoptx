@@ -152,7 +152,7 @@
         <Mm>
           <WinNumber>1</WinNumber>
           <SubType>0</SubType>
-          <ItemText>0x0803E800U</ItemText>
+          <ItemText>0x0803E800</ItemText>
           <AccSizeX>2</AccSizeX>
         </Mm>
       </MemoryWindow1>

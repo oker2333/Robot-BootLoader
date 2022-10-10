@@ -1,7 +1,7 @@
 .\objects\iap.o: iap.c
+.\objects\iap.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\iap.o: iap.h
 .\objects\iap.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\iap.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\iap.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\iap.o: iap_config.h
 .\objects\iap.o: gd32f30x_libopt.h

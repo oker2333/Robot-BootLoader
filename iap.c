@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "iap.h"
 #include "iap_config.h"
 #include "gd32f30x_libopt.h"
@@ -148,7 +149,7 @@ int32_t Jump_to_APP(void)
 			  
 			  uint32_t file_size = flash_read_word(APP_SIZE_ADDRESS);
 			
-				while((init_flag != 0) && (file_size <= APP_FLASH_SIZE) && (file_size > 0))	//not first init
+				while((init_flag != 0) && (file_size <= APP_FLASH_SIZE) && (file_size > 0))
 				{
 					 flash_write_buffer(APP_ADDRESS, (uint8_t*)APP_BACKUP_ADDRESS,file_size);
 					
@@ -156,18 +157,20 @@ int32_t Jump_to_APP(void)
 					 {
 							if(*((volatile uint8_t *)(APP_ADDRESS+i)) != *((volatile uint8_t *)(APP_BACKUP_ADDRESS+i)))
 							{
+								 printf("app data check doesn't pass\r\n");
 								 succeed = 0;
 								 break;
 							}
 					 }
 					 
 					 if(succeed){
+						  printf("OTA Upgrade Succeed\r\n");
 							Write_APP_Size(0);
 					 }
 					 file_size = flash_read_word(APP_SIZE_ADDRESS);
 				}
-			  
-				usart_disable(USART0);
+				
+			  printf("Now Jump to Appication\r\n");		
 				
 				Jump_To_ADDR_t Jump_To_Application = (Jump_To_ADDR_t)(*(volatile uint32_t*)(APP_ADDRESS + 4));
 			
@@ -177,5 +180,8 @@ int32_t Jump_to_APP(void)
 				__set_MSP(*(volatile uint32_t*) APP_ADDRESS);
 				Jump_To_Application();
 		}
+		
+		printf("Invalid Stack Address\r\n");
+		
 		return 1;
 }

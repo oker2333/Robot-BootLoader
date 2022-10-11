@@ -7,7 +7,7 @@ int fputc(int ch, FILE *f)
 {
 	  (void)f;
     usart_data_transmit(USART0, ch);
-    while(RESET == usart_flag_get(USART0, USART_FLAG_TBE));
+	  while(RESET == usart_flag_get(USART0, USART_FLAG_TC));
 	  return 0;
 }
 
@@ -30,5 +30,6 @@ void usart_config(uint32_t baudval)
     usart_receive_config(USART0, USART_RECEIVE_ENABLE);
     usart_transmit_config(USART0, USART_TRANSMIT_ENABLE);
     usart_enable(USART0);
+    while(RESET == usart_flag_get(USART0, USART_FLAG_TBE));
 }
 

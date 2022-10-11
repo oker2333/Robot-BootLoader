@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\GD32F303VCT6.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\GD32F303VCT6.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Oct 11 00:02:34 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Oct 11 21:50:43 2022
 <BR><P>
 <H3>Maximum Stack Usage =        132 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -574,7 +574,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_config
 </UL>
 
-<P><STRONG><a name="[69]"></a>usart_config</STRONG> (Thumb, 134 bytes, Stack size 8 bytes, usart.o(i.usart_config))
+<P><STRONG><a name="[69]"></a>usart_config</STRONG> (Thumb, 148 bytes, Stack size 8 bytes, usart.o(i.usart_config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 124<LI>Call Chain = usart_config &rArr; usart_baudrate_set &rArr; rcu_clock_freq_get
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_periph_clock_enable
@@ -586,6 +586,7 @@ Global Symbols
 <LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_parity_config
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_hardware_flow_rts_config
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_hardware_flow_cts_config
+<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_flag_get
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_enable
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_deinit
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_baudrate_set
@@ -613,7 +614,8 @@ Global Symbols
 <P><STRONG><a name="[68]"></a>usart_flag_get</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, gd32f30x_usart.o(i.usart_flag_get))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = usart_flag_get
 </UL>
-<BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fputc
+<BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_config
+<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fputc
 </UL>
 
 <P><STRONG><a name="[74]"></a>usart_hardware_flow_cts_config</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32f30x_usart.o(i.usart_hardware_flow_cts_config))

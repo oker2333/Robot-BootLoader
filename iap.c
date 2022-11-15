@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdint.h>
 #include "iap.h"
 #include "iap_config.h"
 #include "gd32f30x_libopt.h"
@@ -122,66 +123,42 @@ exit:
 		return ret;
 }
 
-void Write_APP_Size(uint32_t File_Bytes)
-{
-	 flash_write_buffer(APP_SIZE_ADDRESS, (uint8_t*)&File_Bytes,sizeof(uint32_t));
-}
-
 uint8_t Update_Init_Flag(void)
 {
-	uint32_t Valid_Flag = 0xAABBCCDD;
-	uint32_t Current_Flag = flash_read_word(INFO_ADDRESS);
-	if(Current_Flag != Valid_Flag)
+	uint32_t valid_flag = 0xAABBCCDD;
+	uint32_t current_flag = flash_read_word(INFO_ADDRESS);
+	if(current_flag != valid_flag)
 	{
-		 Write_APP_Size(0);
-		 flash_write_buffer(INFO_ADDRESS, (uint8_t*)&Valid_Flag,sizeof(uint32_t));
+		 uint32_t jump_addr = APP_ADDRESS_A;
+		 flash_write_buffer(JUMP_ADDR_ADDRESS, (uint8_t*)&jump_addr,sizeof(uint32_t));
+		 flash_write_buffer(INFO_ADDRESS, (uint8_t*)&valid_flag,sizeof(uint32_t));
 		 return 0;		//first init
 	}
 	return 1;
 }
 
-int32_t Jump_to_APP(void)
+void Jump_to_APP(void)
 {
-		if (0x20000000 == ((*(volatile uint32_t*)APP_ADDRESS) & 0x2FFE0000))
+	  Update_Init_Flag();
+	
+	  uint32_t jump_address = 0x00;
+		flash_read_buffer(JUMP_ADDR_ADDRESS,(uint8_t*)&jump_address,sizeof(uint32_t));
+		  
+		if (0x20000000 == ((*(volatile uint32_t*)jump_address) & 0x2FFE0000))
 		{
-			  uint8_t succeed = 1;
-			  uint8_t init_flag = Update_Init_Flag();
-			  
-			  uint32_t file_size = flash_read_word(APP_SIZE_ADDRESS);
-			
-				while((init_flag != 0) && (file_size <= APP_FLASH_SIZE) && (file_size > 0))
-				{
-					 flash_write_buffer(APP_ADDRESS, (uint8_t*)APP_BACKUP_ADDRESS,file_size);
-					
-					 for(int i = 0;i < file_size;i++)
-					 {
-							if(*((volatile uint8_t *)(APP_ADDRESS+i)) != *((volatile uint8_t *)(APP_BACKUP_ADDRESS+i)))
-							{
-								 printf("app data check doesn't pass\r\n");
-								 succeed = 0;
-								 break;
-							}
-					 }
-					 
-					 if(succeed){
-						  printf("OTA Upgrade Succeed\r\n");
-							Write_APP_Size(0);
-					 }
-					 file_size = flash_read_word(APP_SIZE_ADDRESS);
-				}
+			  printf("Now Jump to Appication, Stack Address = %d\r\n",jump_address);		
 				
-			  printf("Now Jump to Appication\r\n");		
-				
-				Jump_To_ADDR_t Jump_To_Application = (Jump_To_ADDR_t)(*(volatile uint32_t*)(APP_ADDRESS + 4));
+				Jump_To_ADDR_t Jump_To_Application = (Jump_To_ADDR_t)(*(volatile uint32_t*)(jump_address + 4));
 			
-				uint32_t offset = APP_ADDRESS - FLASH_BASE_ADDR;
+				uint32_t offset = jump_address - FLASH_BASE_ADDR;
 				nvic_vector_table_set(NVIC_VECTTAB_FLASH, offset);
 			  
-				__set_MSP(*(volatile uint32_t*) APP_ADDRESS);
+				__set_MSP(*(volatile uint32_t*) jump_address);
 				Jump_To_Application();
 		}
-		
-		printf("Invalid Stack Address\r\n");
-		
-		return 1;
+		else
+		{
+			  printf("Invalid Stack Address = %d\r\n",jump_address);
+		}
+		while(1);
 }

@@ -7,6 +7,6 @@
 
 typedef void (*Jump_To_ADDR_t)(void);
 
-int32_t Jump_to_APP(void);
+void Jump_to_APP(void);
 
 #endif

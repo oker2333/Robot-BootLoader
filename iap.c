@@ -141,10 +141,15 @@ void Jump_to_APP(void)
 {
 	  Update_Init_Flag();
 	
-	  uint32_t jump_address = 0x00;
+	  uint32_t jump_address;
 		flash_read_buffer(JUMP_ADDR_ADDRESS,(uint8_t*)&jump_address,sizeof(uint32_t));
+	  if((jump_address != APP_ADDRESS_A) && (jump_address != APP_ADDRESS_B))
+		{
+			 jump_address = APP_ADDRESS_A;
+			 flash_write_buffer(JUMP_ADDR_ADDRESS, (uint8_t*)&jump_address,sizeof(uint32_t));
+		}
 		  
-		if (0x20000000 == ((*(volatile uint32_t*)jump_address) & 0x2FFE0000))
+		if (0x20000000 == ((*(volatile uint32_t*)jump_address) & 0xFFFE0000))
 		{
 			  printf("jump address = 0x%x\r\n",jump_address);		
 				

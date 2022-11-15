@@ -146,7 +146,7 @@ void Jump_to_APP(void)
 		  
 		if (0x20000000 == ((*(volatile uint32_t*)jump_address) & 0x2FFE0000))
 		{
-			  printf("Now Jump to Appication, Stack Address = %d\r\n",jump_address);		
+			  printf("jump address = 0x%x\r\n",jump_address);		
 				
 				Jump_To_ADDR_t Jump_To_Application = (Jump_To_ADDR_t)(*(volatile uint32_t*)(jump_address + 4));
 			
@@ -158,7 +158,7 @@ void Jump_to_APP(void)
 		}
 		else
 		{
-			  printf("Invalid Stack Address = %d\r\n",jump_address);
+			  printf("Invalid Stack Address = 0x%x\r\n",(*(volatile uint32_t*)jump_address));
 		}
 		while(1);
 }

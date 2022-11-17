@@ -126,19 +126,31 @@ exit:
 uint8_t Update_Init_Flag(void)
 {
 	uint32_t valid_flag = 0xAABBCCDD;
-	uint32_t current_flag = flash_read_word(INFO_ADDRESS);
+	uint32_t current_flag = flash_read_word(INIT_FLAG_ADDRESS);
 	if(current_flag != valid_flag)
 	{
 		 uint32_t jump_addr = APP_ADDRESS_A;
 		 flash_write_buffer(JUMP_ADDR_ADDRESS, (uint8_t*)&jump_addr,sizeof(uint32_t));
-		 flash_write_buffer(INFO_ADDRESS, (uint8_t*)&valid_flag,sizeof(uint32_t));
+		 flash_write_buffer(INIT_FLAG_ADDRESS, (uint8_t*)&valid_flag,sizeof(uint32_t));
 		 return 0;		//first init
 	}
 	return 1;
 }
 
+void Update_Boot_Ver(void)
+{
+	  uint16_t Boot_Version = ((MAJOR_VERSION << 8) | MINOR_VERSION);
+	  uint16_t Version_In_Flash = flash_read_dword(BOOT_VERSION_ADDRESS);
+	  if(Version_In_Flash != Boot_Version)
+		{
+			 flash_write_buffer(BOOT_VERSION_ADDRESS, (uint8_t*)&Boot_Version,sizeof(uint16_t));
+		}
+}	
+
 void Jump_to_APP(void)
 {
+		Update_Boot_Ver();
+
 	  Update_Init_Flag();
 	
 	  uint32_t jump_address;

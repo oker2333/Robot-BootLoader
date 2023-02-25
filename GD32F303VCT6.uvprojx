@@ -321,7 +321,7 @@
             <PlainCh>0</PlainCh>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
-            <wLevel>2</wLevel>
+            <wLevel>1</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,GD32F30X_HD,__TARGET_FPU_VFP</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Robot-BootLoader;.\CMSIS;.\CMSIS\GD32F30x\Include;.\GD32F30x_standard_peripheral\Include;.\FreeRTOS-Kernel\include;.\FreeRTOS-Kernel\portable\RVDS\ARM_CM4F;.\FreeRTOS-Kernel;.\Hardware;.\vl6180x;.\CodeSamples\inc;.\Common_API;.\YModem</IncludePath>
+              <IncludePath>..\Robot-BootLoader;.\CMSIS;.\CMSIS\GD32F30x\Include;.\GD32F30x_standard_peripheral\Include;.\FreeRTOS-Kernel\include;.\FreeRTOS-Kernel\portable\RVDS\ARM_CM4F;.\FreeRTOS-Kernel;.\Hardware;.\vl6180x;.\CodeSamples\inc;.\Common_API;.\YModem;.\cm_backtrace;.\cm_backtrace\fault_handler;.\cm_backtrace\Languages\en-US;.\cm_backtrace\Languages\zh-CN;.\cm_backtrace\Languages</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -491,6 +491,21 @@
               <FileName>usart.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Hardware\usart.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>FaultTrace</GroupName>
+          <Files>
+            <File>
+              <FileName>cm_backtrace.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\cm_backtrace\cm_backtrace.c</FilePath>
+            </File>
+            <File>
+              <FileName>cmb_fault.S</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\cm_backtrace\fault_handler\cmb_fault.S</FilePath>
             </File>
           </Files>
         </Group>
